@@ -4,15 +4,28 @@ import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz'
 
 class Quiz extends Component {
     state = {
+        activeQuestion: 0,
         quiz: [
             {
                 question: 'What color is the sky?',
                 rightAnswerId: 2,
+                id: 1,
                 answers:[
                     {text: 'Black', id: 1},
                     {text: 'Blue', id: 2},
                     {text: 'Red', id: 3},
                     {text: 'Green', id: 4}
+                ]
+            },
+            {
+                question: 'What year is it now?',
+                rightAnswerId: 3,
+                id: 2,
+                answers:[
+                    {text: '2018', id: 1},
+                    {text: '2019', id: 2},
+                    {text: '2020', id: 3},
+                    {text: '2021', id: 4}
                 ]
             }
         ]
@@ -20,6 +33,10 @@ class Quiz extends Component {
 
     onAnswerClickHandler = (answerId) => {
         console.log(answerId)
+
+        this.setState({
+            activeQuestion: this.state.activeQuestion + 1
+        })
     }
 
     render() {
@@ -28,9 +45,11 @@ class Quiz extends Component {
                 <div className={classes.QuizWrapper}>
                     <h1>Answer all questions</h1>
                     <ActiveQuiz
-                        question={this.state.quiz[0].question}
-                        answers={this.state.quiz[0].answers}
+                        question={this.state.quiz[this.state.activeQuestion].question}
+                        answers={this.state.quiz[this.state.activeQuestion].answers}
                         onAnswerClick={this.onAnswerClickHandler}
+                        quizLength={this.state.quiz.length}
+                        questionNumber={this.state.activeQuestion + 1}
                     />
                 </div>
             </div>
