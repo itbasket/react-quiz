@@ -2,7 +2,6 @@ import React from 'react'
 import classes from './AnswerItem.module.css'
 
 const AnswerItem = props => {
-    console.log(classes)
     const cls = [classes.AnswerItem]
 
     if (props.state) {
