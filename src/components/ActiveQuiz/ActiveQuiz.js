@@ -10,7 +10,7 @@ const ActiveQuiz = props => (
                 {props.question}
             </span>
 
-            <small>{props.questionNumber} of {props.quizLength}</small>
+            <small>{props.questionNumber} out of {props.quizLength}</small>
         </p>
 
         <AnswersList 
